@@ -1,2 +1,2 @@
-id,merchantId,customerRef,clearedTxnAmount,txnCurrency,txnDateTime
+id,merchantId,accountNumber,transactionAmount,currency,dateTime
 "21040616460216129","1022","12110200001250",299,"GBP","2021-04-06T16:46:03+01:00"

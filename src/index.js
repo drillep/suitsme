@@ -49,8 +49,6 @@ if (require.main === module) {
   run();
 } else {
   module.exports = {
-    internalProviderList,
-    externalProviderList,
 		loadTransactionData,
     transformTransactionData,
 		toCsv,

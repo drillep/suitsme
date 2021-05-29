@@ -1,4 +1,4 @@
-const { internalProviderList, externalProviderList } = require('./providerList')
+const { internalProviderList } = require('./providerList')
 
 module.exports.providers = (transaction) => {
 	internalProviderList.includes(transaction.payee.merchantId)
@@ -7,9 +7,9 @@ module.exports.providers = (transaction) => {
 	return {
 		id: transaction.id,
 		merchantId: transaction.payee.merchantId,
-		...(transaction.payer.accountNo && ( internal ? { accountNumber: transaction.payer.accountNo } : { customerRef: transaction.payer.accountNo })),
-		...(transaction.amount && ( internal ? { transactionAmount: transaction.amount } : { clearedTxnAmount: transaction.amount })),
-		...(transaction.currency && ( internal ? { currency: transaction.currency } : { txnCurrency: transaction.currency })),
-		...(transaction.created_date_time && ( internal ? { dateTime: transaction.created_date_time } : { txnDateTime: transaction.created_date_time }))
+		...(transaction.payer.accountNo && ( internal ? { customerRef: transaction.payer.accountNo } : { accountNumber: transaction.payer.accountNo })),
+		...(transaction.amount && ( internal ?  { clearedTxnAmount: transaction.amount } : { transactionAmount: transaction.amount })),
+		...(transaction.currency && ( internal ? { txnCurrency: transaction.currency } : { currency: transaction.currency })),
+		...(transaction.created_date_time && ( internal ? { txnDateTime: transaction.created_date_time } : { dateTime: transaction.created_date_time }))
 	}
 }
